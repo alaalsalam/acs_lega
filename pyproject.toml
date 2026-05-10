@@ -1,0 +1,22 @@
+[project]
+name = "acs_legal"
+authors = [
+    { name = "Yemen Frappe", email = "info@yemenfrappe.com" }
+]
+description = "Premium bilingual legal website for ACS Legal, integrated with Frappe"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = []
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.frappe]
+app_name = "acs_legal"
+app_title = "ACS Legal"
+app_publisher = "Yemen Frappe"
+app_description = "Premium bilingual legal website for ACS Legal"
+app_email = "info@yemenfrappe.com"
+app_license = "mit"
