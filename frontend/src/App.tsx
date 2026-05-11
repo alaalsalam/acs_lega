@@ -5,8 +5,10 @@ import {
   BookOpen,
   BriefcaseBusiness,
   Building2,
+  CalendarCheck,
   CheckCircle2,
   ChevronDown,
+  ClipboardCheck,
   Cpu,
   Eye,
   FileText,
@@ -16,15 +18,16 @@ import {
   ListChecks,
   Mail,
   MapPin,
+  MessageCircle,
   Menu,
   Phone,
-
   Quote,
   ReceiptText,
   Scale,
   ScrollText,
   Send,
   Shield,
+  Sparkles,
   Target,
   Trophy,
   X,
@@ -75,6 +78,29 @@ const trustPoints = [
   { icon: CheckCircle2, title: 'حلول عملية لا نظرية', desc: 'نقدم حلولاً قابلة للتنفيذ في بيئة الأعمال.' },
 ];
 
+const consultationFlow = [
+  {
+    icon: MessageCircle,
+    title: 'طلب الاستشارة',
+    desc: 'تشاركنا ملخص المسألة، والقطاع، والهدف التجاري من الاستشارة.',
+  },
+  {
+    icon: ClipboardCheck,
+    title: 'فرز قانوني أولي',
+    desc: 'نحدد درجة العجلة، المستندات المطلوبة، والمسار الأنسب للتعامل.',
+  },
+  {
+    icon: CalendarCheck,
+    title: 'جلسة تشخيص',
+    desc: 'نناقش الوقائع ونرتب المخاطر والخيارات القانونية بلغة واضحة.',
+  },
+  {
+    icon: Sparkles,
+    title: 'خطة عمل قابلة للتنفيذ',
+    desc: 'تستلم توصية عملية: ما الذي نفعله الآن، وما الذي يؤجل، ولماذا.',
+  },
+];
+
 const coverClassMap: Record<string, string> = {
   'foreign-investment': 'cover-foreign-investment',
   'company-formation': 'cover-company-formation',
@@ -98,10 +124,16 @@ const stagger = { show: { transition: { staggerChildren: 0.08 } } };
 
 // ── Hero Case data (simulated) ──
 const heroCases = [
-  { type: 'تأسيس شركة', status: 'قيد الإجراء', name: 'تأسيس شركة مساهمة_foreign', detail: 'الرياض · 3 أيام متبقية' },
-  { type: 'تحكيم تجاري', status: 'مستjr', name: 'نزاع تعاقدي_شريك تجاري', detail: 'جلسة التحكيم التالية: 18 مايو' },
-  { type: 'ملكية فكرية', status: 'تمت', name: 'تسجيل علامة تجارية_ technology', detail: 'السجل التجاري · رقم 403xxxx' },
-  { type: 'امتثال ضريبي', status: 'قيد الإجراء', name: 'إقرار ضريبي_ربع سنوي', detail: 'الموعد النهائي: 30 يونيو' },
+  { type: 'استثمار أجنبي', status: 'قيد المعالجة', name: 'ترخيص دخول السوق السعودي', detail: 'هيكلة الكيان · مراجعة القيود النظامية' },
+  { type: 'نزاع تجاري', status: 'تقييم أولي', name: 'مطالبة تعاقدية مع شريك', detail: 'تحليل العقد · خيارات التسوية والتحكيم' },
+  { type: 'ملكية فكرية', status: 'جاهز للتقديم', name: 'تسجيل علامة تجارية', detail: 'تصنيف العلامة · بحث التعارضات' },
+  { type: 'امتثال', status: 'متابعة دورية', name: 'مراجعة زكوية وضريبية', detail: 'تقليل المخاطر · جدول الالتزامات' },
+];
+
+const heroHighlights = [
+  'استشارة واضحة بلا تعقيد',
+  'خطة مكتوبة قابلة للتنفيذ',
+  'سرية مهنية منذ أول تواصل',
 ];
 
 // ── Component: Service Explorer ──
@@ -345,6 +377,28 @@ function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
   );
 }
 
+function ConsultationFlow() {
+  return (
+    <div className="flow-grid">
+      {consultationFlow.map((item, index) => (
+        <motion.div
+          className="flow-card"
+          key={item.title}
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ delay: index * 0.08, duration: 0.45 }}
+        >
+          <div className="flow-number">{String(index + 1).padStart(2, '0')}</div>
+          <div className="flow-icon"><item.icon size={19} /></div>
+          <h3>{item.title}</h3>
+          <p>{item.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 // ── Main App ──
 export default function App() {
   const [data] = useState<SiteData>(fallbackData);
@@ -448,14 +502,14 @@ export default function App() {
               animate="show"
             >
               <motion.div className="hero-eyebrow" variants={fadeUp}>
-                شريك قانوني للأعمال والاستثمار في السعودية
+                مكتب محاماة واستشارات قانونية للأعمال في السعودية
               </motion.div>
               <motion.h1 className="hero-title" variants={fadeUp}>
-                نحمي أعمالك.<br />
-                ونسرّع <em>استثمارك.</em>
+                قرارات قانونية<br />
+                تحمي أعمالك وتفتح <em>مسار النمو.</em>
               </motion.h1>
               <motion.p className="hero-desc" variants={fadeUp}>
-                من الترافع والتحكيم إلى تأسيس الشركات والاستثمار الأجنبي والملكية الفكرية — نقدم خدمات قانونية تجمع بين الدقة وفهم بيئة الأعمال السعودية، لنحمي مصالحك من اليوم الأول.
+                ACS Legal شريك قانوني للشركات والمستثمرين: نقرأ المخاطر، نصيغ الحل، ونحوّل المسألة القانونية إلى خطة واضحة قابلة للتنفيذ في السوق السعودي.
               </motion.p>
               <motion.div className="hero-actions" variants={fadeUp}>
                 <a className="btn-primary" href="#contact">
@@ -465,9 +519,14 @@ export default function App() {
                   اكتشف خدماتنا
                 </a>
               </motion.div>
+              <motion.div className="hero-proof-row" variants={fadeUp}>
+                {heroHighlights.map((item) => (
+                  <span key={item}><CheckCircle2 size={13} />{item}</span>
+                ))}
+              </motion.div>
               <motion.div className="hero-badge" variants={fadeUp}>
                 <span className="hero-badge-dot" />
-                فريق متخصص · سرية كاملة · استجابة 24 ساعة
+                متاحون لاستقبال الطلبات العاجلة خلال أيام العمل
               </motion.div>
             </motion.div>
 
@@ -479,12 +538,22 @@ export default function App() {
               transition={{ delay: 0.4, duration: 0.6 }}
             >
               <div className="hero-command-head">
-                <span className="hero-command-title">Legal Operations</span>
+                <span className="hero-command-title">ACS Advisory Desk</span>
                 <div className="hero-command-dots">
                   <span /><span /><span />
                 </div>
               </div>
               <div className="hero-command-body">
+                <div className="hero-command-summary">
+                  <div>
+                    <span>مسارات نشطة</span>
+                    <strong>04</strong>
+                  </div>
+                  <div>
+                    <span>أولوية</span>
+                    <strong>عالية</strong>
+                  </div>
+                </div>
                 {heroCases.map((c, i) => (
                   <motion.div
                     key={i}
@@ -585,6 +654,26 @@ export default function App() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── Consultation Flow ── */}
+        <section className="section flow-section">
+          <div className="container">
+            <motion.div
+              className="flow-header"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="section-kicker">رحلة الاستشارة</span>
+              <h2 className="section-title">من أول رسالة إلى قرار قانوني واضح.</h2>
+              <p className="section-subtitle">
+                صممنا تجربة التواصل لتكون مباشرة ومطمئنة: تفهم أين تقف، وما المطلوب منك، وما الخطوة التالية.
+              </p>
+            </motion.div>
+            <ConsultationFlow />
           </div>
         </section>
 
@@ -922,6 +1011,11 @@ export default function App() {
                     <div className="contact-icon"><MapPin size={16} /></div>
                     <span>{data.settings.location_ar}</span>
                   </div>
+                </div>
+                <div className="contact-promise">
+                  <div><strong>01</strong><span>مراجعة أولية للطلب</span></div>
+                  <div><strong>02</strong><span>تحديد المستندات المطلوبة</span></div>
+                  <div><strong>03</strong><span>اقتراح موعد مناسب للاستشارة</span></div>
                 </div>
               </motion.div>
 
