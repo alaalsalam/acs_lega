@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CalendarCheck, ChevronLeft, ScrollText } from 'lucide-react';
 import type { Article } from '../types';
@@ -21,14 +21,25 @@ const coverClassMap: Record<string, string> = {
 
 interface ArticleFilterProps {
   articles: Article[];
+  initialArticleSlug?: string;
 }
 
-export default function ArticleFilter({ articles }: ArticleFilterProps) {
+export default function ArticleFilter({ articles, initialArticleSlug }: ArticleFilterProps) {
   const categories = ['الكل', ...Array.from(new Set(articles.map((a) => a.category_ar)))];
   const [active, setActive] = useState('الكل');
   const [previewArticle, setPreviewArticle] = useState<Article | null>(null);
 
   const filtered = active === 'الكل' ? articles : articles.filter((a) => a.category_ar === active);
+
+  useEffect(() => {
+    if (!initialArticleSlug) return;
+
+    const article = articles.find((item) => item.slug === initialArticleSlug);
+    if (!article) return;
+
+    setActive(article.category_ar);
+    setPreviewArticle(article);
+  }, [articles, initialArticleSlug]);
 
   return (
     <>

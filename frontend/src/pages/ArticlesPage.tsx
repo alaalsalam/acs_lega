@@ -17,9 +17,7 @@ export default function ArticlesPage({ data }: ArticlesPageProps) {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
-  // If there's a slug param, we could expand a specific article
-  // For now we show the full articles section
-  const article = slug ? data.articles.find((a) => a.slug === slug) : null;
+  const articleExists = slug ? data.articles.some((a) => a.slug === slug) : true;
 
   return (
     <div className="page-articles">
@@ -30,15 +28,19 @@ export default function ArticlesPage({ data }: ArticlesPageProps) {
             <ArrowLeft size={14} />
             العودة للرئيسية
           </button>
-          <h1>الرؤى القانونية</h1>
-          <p>مقالات قانونية مبسطة للمدراء والمستثمرين في السوق السعودي.</p>
+          <h1>{articleExists ? 'الرؤى القانونية' : 'الرؤية غير متاحة'}</h1>
+          <p>
+            {articleExists
+              ? 'مقالات قانونية مبسطة للمدراء والمستثمرين في السوق السعودي.'
+              : 'لم نجد المقال المطلوب، لكن يمكنك تصفح أحدث الرؤى القانونية أدناه.'}
+          </p>
           <span className="articles-count">{data.articles.length} مقال</span>
         </div>
       </div>
 
       <section className="section articles-section">
         <div className="container">
-          <ArticleFilter articles={data.articles} />
+          <ArticleFilter articles={data.articles} initialArticleSlug={slug} />
         </div>
       </section>
     </div>

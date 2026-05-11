@@ -40,7 +40,11 @@ class ACSLegalRenderer:
         self.http_status_code = http_status_code or 200
 
     def can_render(self):
-        return self.path == "acs-legal" or self.path.startswith("acs-legal/")
+        if self.path == "acs-legal" or self.path.startswith("acs-legal/"):
+            return True
+
+        first_segment = self.path.split("/", 1)[0] if self.path else ""
+        return first_segment in SPA_PREFIXES
 
     def render(self):
         source = FRONTEND_INDEX if FRONTEND_INDEX.exists() else STATIC_SHELL
