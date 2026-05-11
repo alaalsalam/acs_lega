@@ -6,7 +6,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <title>ACS Legal | محاماة واستشارات قانونية متكاملة للأعمال والاستثمار في السعودية</title>
     <meta name="description" content="ACS Legal - شركة محاماة سعودية متخصصة. خدمات قانونية شاملة: الترافع والتحكيم، صياغة العقود، الدعم القانوني المؤسسي، تأسيس الشركات، الاستثمار الأجنبي، الملكية الفكرية، القانون الرياضي، والخدمات القانونية التقنية. شريككم القانوني للنمو الآمن في السعودية." />
-    <meta name="keywords" content="محاماة السعودية, استشارات قانونية, تأسيس شركات, استثمار أجنبي, عقود تجارية, تحكيم, حوكمة, ملكية فكرية, محامي سعودي, ACS Legal,律师, law firm Saudi Arabia" />
+    <meta name="keywords" content="محاماة السعودية, استشارات قانونية, تأسيس شركات, استثمار أجنبي, عقود تجارية, تحكيم, حوكمة, ملكية فكرية, محامي سعودي, ACS Legal" />
     <link rel="canonical" href="https://acslegal.sa/" />
     <meta name="author" content="ACS Legal" />
     <meta name="theme-color" content="#0b1929" />
@@ -18,23 +18,31 @@
     <meta property="og:url" content="https://acslegal.sa/" />
     <meta property="og:title" content="ACS Legal | محاماة واستشارات قانونية متكاملة للأعمال والاستثمار" />
     <meta property="og:description" content="شريككم القانوني للأعمال والاستثمار في السعودية. خدمات قانونية شاملة: الترافع والتحكيم، العقود، الحوكمة، الاستثمار الأجنبي، الملكية الفكرية." />
-    <meta property="og:image" content="https://acslegal.sa/files/acs-legal-og.jpg" />
+    <meta property="og:image" content="https://acslegal.sa/assets/acs_legal/frontend/og-image.svg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ACS Legal - محاماة واستشارات قانونية متكاملة للأعمال والاستثمار في السعودية" />
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@acslegal" />
     <meta name="twitter:title" content="ACS Legal | محاماة واستشارات قانونية متكاملة" />
     <meta name="twitter:description" content="شريككم القانوني للأعمال والاستثمار في السعودية. خدمات قانونية شاملة للترافع، العقود، الحوكمة، الاستثمار الأجنبي." />
-    <meta name="twitter:image" content="https://acslegal.sa/files/acs-legal-og.jpg" />
+    <meta name="twitter:image" content="https://acslegal.sa/assets/acs_legal/frontend/og-image.svg" />
+    <meta name="twitter:image:alt" content="ACS Legal - محاماة واستشارات قانونية متكاملة" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/acs_legal/frontend/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/acs_legal/frontend/favicon.svg" />
 
-    <!-- Fonts -->
+    <!-- Font optimization: preconnect + display=swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+    </noscript>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -47,7 +55,7 @@
           "name": "ACS Legal",
           "alternateName": "معايير الامتثال المتقدمة",
           "url": "https://acslegal.sa",
-          "logo": "https://acslegal.sa/files/acs-legal-og.jpg",
+          "logo": "https://acslegal.sa/assets/acs_legal/frontend/favicon.svg",
           "description": "مكتب قانوني سعودي متخصص في الخدمات القانونية للأعمال والاستثمار. نقدم خدمات تشمل الترافع والتحكيم، صياغة العقود، الدعم القانوني المؤسسي، تأسيس الشركات، الاستثمار الأجنبي، الملكية الفكرية.",
           "email": "info@acslegal.sa",
           "telephone": "+966537500382",
@@ -68,7 +76,7 @@
           "name": "ACS Legal",
           "alternateName": "معايير الامتثال المتقدمة",
           "url": "https://acslegal.sa",
-          "logo": "https://acslegal.sa/files/acs-legal-og.jpg",
+          "logo": "https://acslegal.sa/assets/acs_legal/frontend/favicon.svg",
           "description": "خدمات قانونية متكاملة للأعمال والاستثمار في المملكة العربية السعودية.",
           "telephone": "+966537500382",
           "email": "info@acslegal.sa",
@@ -177,7 +185,7 @@
           "publisher": {"@id": "https://acslegal.sa/#organization"},
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://acslegal.sa/#contact?q={search_term_string}",
+            "target": "https://acslegal.sa/?q={search_term_string}",
             "query-input": "required name=search_term_string"
           }
         },
@@ -195,6 +203,12 @@
       ]
     }
     </script>
+
+    <!-- Performance: prevent render-blocking -->
+    <style>
+      /* Critical CSS: prevent FOUC for fonts */
+      body { font-family: 'Cairo', system-ui, -apple-system, sans-serif; }
+    </style>
   </head>
   <body>
     <div id="root"></div>
